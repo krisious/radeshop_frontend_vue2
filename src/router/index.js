@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import ProductView from '../views/ProductView.vue'
 import ShoppingCartView from '../views/ShoppingCartView.vue'
 import SuccessView from '../views/SuccessView.vue'
+import AboutUsView from '../views/AboutUsView.vue'
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,11 @@ const routes = [
     name: 'success',
     component: SuccessView
   },
+  {
+    path: '/about-us',
+    name: 'about-us',
+    component: AboutUsView
+  }
 ]
 
 const router = new VueRouter({
