@@ -21,8 +21,8 @@
         >
           <div>
             <div class="logo">
-              <router-link to="/home">
-                <img src="img/logo-rade/rade-black.png" alt="" width="200px" />
+              <router-link to="/">
+                <img src="img/logo-rade/ritem.png" alt="" width="200px" />
               </router-link>
             </div>
           </div>
