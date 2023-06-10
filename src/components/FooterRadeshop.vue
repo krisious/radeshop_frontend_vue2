@@ -9,9 +9,7 @@
               <div class="footer-logo">
                 <a href="#">
                   <img
-                    width="120px"
-                    height="80px"
-                    src="img/logo-rade/rade-white.png"
+                    src="img/logo-rade/rputih1.png"
                     alt=""
                   />
                 </a>
