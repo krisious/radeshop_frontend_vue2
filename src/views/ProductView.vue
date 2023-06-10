@@ -57,6 +57,7 @@
                   </div>
                   <div class="pd-desc text-justify">
                     <p v-html="productDetails.description"></p>
+                    <p>Stok : {{ productDetails.quantity }}</p>
                     <h4>Rp{{ productDetails.price }}</h4>
                   </div>
                   <div class="quantity">

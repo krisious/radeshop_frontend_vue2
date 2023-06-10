@@ -12,6 +12,11 @@
               <i class="fa fa-phone"></i> +628 20012003
             </div>
           </div>
+          <div class="ht-right">
+            <div class="login-panel">
+              <a href="http://127.0.0.1:8000/" target="_blank" class="primary-btn">Admin</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -40,7 +45,12 @@
                       <tbody v-if="cartUser.length > 0">
                         <tr v-for="cart in cartUser" :key="cart.id">
                           <td class="si-pic">
-                            <img class="photo-item" :src="cart.photo" alt width />
+                            <img
+                              class="photo-item"
+                              :src="cart.photo"
+                              alt
+                              width
+                            />
                           </td>
                           <td class="si-text">
                             <div class="product-selected">
@@ -124,9 +134,17 @@ export default {
 .inner-header {
   padding: 10px;
 }
-
 .photo-item {
   width: 80px;
   height: 80px;
+}
+
+.header-top .ht-right .login-panel{
+  padding: 15px;
+}
+
+.login-panel .primary-btn{
+  width: 100px;
+  padding: 5px;
 }
 </style>

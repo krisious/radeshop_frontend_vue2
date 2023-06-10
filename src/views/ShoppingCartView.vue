@@ -111,10 +111,6 @@
               <div class="col-lg-12">
                 <div class="proceed-checkout text-left">
                   <ul>
-                    <li class="subtotal">
-                      ID Transaction
-                      <span>#SH12000</span>
-                    </li>
                     <li class="subtotal mt-3">
                       Subtotal
                       <span>Rp{{ totalPrice }}</span>
@@ -137,7 +133,7 @@
                     </li>
                     <li class="subtotal mt-3">
                       Nama Penerima
-                      <span>Shayna</span>
+                      <span>rade</span>
                     </li>
                   </ul>
                   <!-- <router-link to="/success"> -->
@@ -205,6 +201,7 @@ export default {
           checkoutData
         )
         .then(() => this.$router.push("success"))
+        .then(() => localStorage.removeItem("cartUser"))
         // eslint-disable-next-line no-console
         .catch(err => console.log(err));
     }
