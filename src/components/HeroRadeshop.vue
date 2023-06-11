@@ -11,7 +11,7 @@
       >
         <div
           class="single-hero-items set-bg"
-          style="background-image: url('img/rade-banner.jpg')"
+          style="background-image: url('img/banner/banher1.png')"
         >
           <div class="container">
             <div class="row">
@@ -29,7 +29,7 @@
         </div>
         <div
           class="single-hero-items set-bg"
-          style="background-image: url('img/rade-banner.jpg')"
+          style="background-image: url('img/banner/banher2.png')"
         >
           <div class="container">
             <div class="row">
@@ -47,7 +47,7 @@
         </div>
         <div
           class="single-hero-items set-bg"
-          style="background-image: url('img/rade-banner.jpg')"
+          style="background-image: url('img/banner/banher3.png')"
         >
           <div class="container">
             <div class="row">

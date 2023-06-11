@@ -1,6 +1,6 @@
 <template>
   <div class="shopping">
-    <header-radeshop />
+    <HeaderRadeshop />
 
     <!-- Breadcrumb Section Begin -->
     <div class="breacrumb-section">
@@ -37,28 +37,18 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr v-for="cart in cartUser" :key="cart.id">
                         <td class="cart-pic first-row">
-                          <img src="img/cart-page/product-1.jpg" />
+                          <img class="img-cart" :src="cart.photo" />
                         </td>
                         <td class="cart-title first-row text-center">
-                          <h5>Pure Pineapple</h5>
+                          <h5>{{ cart.name }}</h5>
                         </td>
-                        <td class="p-price first-row">$60.00</td>
-                        <td class="delete-item">
-                          <a href="#"><i class="material-icons"> close </i></a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="cart-pic first-row">
-                          <img src="img/cart-page/product-1.jpg" />
-                        </td>
-                        <td class="cart-title first-row text-center">
-                          <h5>Pure Pineapple</h5>
-                        </td>
-                        <td class="p-price first-row">$60.00</td>
-                        <td class="delete-item">
-                          <a href="#"><i class="material-icons"> close </i></a>
+                        <td class="p-price first-row">Rp{{ cart.price }}</td>
+                        <td @click="removeItem(cartUser.index)" class="delete-item">
+                          <a href="#">
+                            <i class="material-icons">close</i>
+                          </a>
                         </td>
                       </tr>
                     </tbody>
@@ -77,6 +67,7 @@
                         id="namaLengkap"
                         aria-describedby="namaHelp"
                         placeholder="Masukan Nama"
+                        v-model="customerInfo.name"
                       />
                     </div>
                     <div class="form-group">
@@ -87,6 +78,7 @@
                         id="emailAddress"
                         aria-describedby="emailHelp"
                         placeholder="Masukan Email"
+                        v-model="customerInfo.email"
                       />
                     </div>
                     <div class="form-group">
@@ -97,6 +89,7 @@
                         id="noHP"
                         aria-describedby="noHPHelp"
                         placeholder="Masukan No. HP"
+                        v-model="customerInfo.number"
                       />
                     </div>
                     <div class="form-group">
@@ -105,6 +98,7 @@
                         class="form-control"
                         id="alamatLengkap"
                         rows="3"
+                        v-model="customerInfo.address"
                       ></textarea>
                     </div>
                   </form>
@@ -117,27 +111,34 @@
               <div class="col-lg-12">
                 <div class="proceed-checkout text-left">
                   <ul>
-                    <li class="subtotal">
-                      ID Transaction <span>#SH12000</span>
-                    </li>
-                    <li class="subtotal mt-3">Subtotal <span>$240.00</span></li>
-                    <li class="subtotal mt-3">Pajak <span>10%</span></li>
                     <li class="subtotal mt-3">
-                      Total Biaya <span>$440.00</span>
+                      Subtotal
+                      <span>Rp{{ totalPrice }}</span>
                     </li>
                     <li class="subtotal mt-3">
-                      Bank Transfer <span>Mandiri</span>
+                      Pajak
+                      <span>10% Rp{{ addTax }}</span>
                     </li>
                     <li class="subtotal mt-3">
-                      No. Rekening <span>2208 1996 1403</span>
+                      Total Biaya
+                      <span>Rp{{ totalAll }}</span>
                     </li>
                     <li class="subtotal mt-3">
-                      Nama Penerima <span>Shayna</span>
+                      Bank Transfer
+                      <span>Mandiri</span>
+                    </li>
+                    <li class="subtotal mt-3">
+                      No. Rekening
+                      <span>2208 1996 1403</span>
+                    </li>
+                    <li class="subtotal mt-3">
+                      Nama Penerima
+                      <span>rade</span>
                     </li>
                   </ul>
-                  <router-link to="/success" class="proceed-btn">
-                    I ALREADY PAID
-                  </router-link>
+                  <!-- <router-link to="/success"> -->
+                    <a @click="checkout()" href="#"  class="proceed-btn">I ALREADY PAID</a>
+                  <!-- </router-link> -->
                 </div>
               </div>
             </div>
@@ -154,10 +155,85 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 import HeaderRadeshop from "@/components/HeaderRadeshop.vue";
 
+import axios from "axios";
+
 export default {
   name: "ShoppingCartView",
   components: {
     HeaderRadeshop,
   },
+  data() {
+    return {
+      cartUser: [],
+      customerInfo: {
+        name: "",
+        email: "",
+        number: "",
+        address: ""
+      }
+    };
+  },
+  methods: {
+    removeItem(index) {
+      this.cartUser.splice(index, 1);
+      const parsed = JSON.stringify(this.cartUser);
+      localStorage.setItem("cartUser", parsed);
+    },
+    // fungsi mengirim data ke API
+    checkout() {
+      let productIds = this.cartUser.map(function(product) {
+        return product.id;
+      });
+
+      let checkoutData = {
+        name: this.customerInfo.name,
+        email: this.customerInfo.email,
+        number: this.customerInfo.number,
+        address: this.customerInfo.address,
+        transaction_total: this.totalAll,
+        transaction_status: "PENDING",
+        transaction_details: productIds
+      };
+
+      axios
+        .post(
+          "http://127.0.0.1:8000/api/checkout",
+          checkoutData
+        )
+        .then(() => this.$router.push("success"))
+        .then(() => localStorage.removeItem("cartUser"))
+        // eslint-disable-next-line no-console
+        .catch(err => console.log(err));
+    }
+  },
+  mounted() {
+    if (localStorage.getItem("cartUser")) {
+      try {
+        this.cartUser = JSON.parse(localStorage.getItem("cartUser"));
+      } catch (e) {
+        localStorage.removeItem("cartUser");
+      }
+    }
+  },
+  computed: {
+    totalPrice() {
+      return this.cartUser.reduce(function(items, data) {
+        return items + data.price;
+      }, 0);
+    },
+    addTax() {
+      return (this.totalPrice * 10) / 100;
+    },
+    totalAll() {
+      return this.totalPrice + this.addTax;
+    }
+  }
 };
 </script>
+
+<style scoped>
+.img-cart {
+  width: 100px;
+  height: 100px;
+}
+</style>
