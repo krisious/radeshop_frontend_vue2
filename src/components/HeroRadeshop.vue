@@ -22,7 +22,7 @@
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore
                 </p>
-                <a href="#" class="primary-btn">Shop Now</a>
+                <router-link to="/market" class="primary-btn">Shop Now</router-link>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore
                 </p>
-                <a href="#" class="primary-btn">Shop Now</a>
+                <router-link to="/market" class="primary-btn">Shop Now</router-link>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore
                 </p>
-                <a href="#" class="primary-btn">Shop Now</a>
+                <router-link to="/market" class="primary-btn">Shop Now</router-link>
               </div>
             </div>
           </div>

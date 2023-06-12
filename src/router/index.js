@@ -5,6 +5,7 @@ import ProductView from "../views/ProductView.vue";
 import ShoppingCartView from "../views/ShoppingCartView.vue";
 import SuccessView from "../views/SuccessView.vue";
 import AboutUsView from "../views/AboutUsView.vue";
+import MarketView from "../views/MarketView.vue";
 
 Vue.use(VueRouter);
 
@@ -43,6 +44,11 @@ const routes = [
     path: "/about-us",
     name: "about-us",
     component: AboutUsView,
+  },
+  {
+    path: "/market",
+    name: "market",
+    component: MarketView,
   },
 ];
 

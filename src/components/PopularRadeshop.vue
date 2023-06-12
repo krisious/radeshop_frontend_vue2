@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-12 mt-5" v-if="products.length > 0">
+          <div class="col-lg-12 mt-5" v-if="products.length > 0">   
             <carousel
               class="product-slider"
               :items="3"
