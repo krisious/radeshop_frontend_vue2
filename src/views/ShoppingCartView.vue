@@ -45,7 +45,10 @@
                           <h5>{{ cart.name }}</h5>
                         </td>
                         <td class="p-price first-row">Rp{{ cart.price }}</td>
-                        <td @click="removeItem(cartUser.index)" class="delete-item">
+                        <td
+                          @click="removeItem(cartUser.index)"
+                          class="delete-item"
+                        >
                           <a href="#">
                             <i class="material-icons">close</i>
                           </a>
@@ -123,7 +126,7 @@
                       Total Biaya
                       <span>Rp{{ totalAll }}</span>
                     </li>
-                    <li class="subtotal mt-3">
+                    <li class="subtotal mt-3">  
                       Bank Transfer
                       <span>Mandiri</span>
                     </li>
@@ -137,7 +140,9 @@
                     </li>
                   </ul>
                   <!-- <router-link to="/success"> -->
-                    <a @click="checkout()" href="#"  class="proceed-btn">I ALREADY PAID</a>
+                  <a @click="checkForm()" href="#" class="proceed-btn"
+                    >I ALREADY PAID</a
+                  >
                   <!-- </router-link> -->
                 </div>
               </div>
@@ -169,8 +174,8 @@ export default {
         name: "",
         email: "",
         number: "",
-        address: ""
-      }
+        address: "",
+      },
     };
   },
   methods: {
@@ -179,9 +184,26 @@ export default {
       const parsed = JSON.stringify(this.cartUser);
       localStorage.setItem("cartUser", parsed);
     },
+    checkForm() {
+      if (
+        this.cartUser.length === 0 ||
+        this.customerInfo.name === "" ||
+        this.customerInfo.email === "" ||
+        this.customerInfo.number === "" ||
+        this.customerInfo.address === ""
+      ) {
+        if (this.cartUser.length === 0) {
+          alert("Anda harus memilih produk terlebih dahulu!");
+        } else {
+          alert("Anda harus mengisi data diri dengan lengkap!");
+        }
+      } else {
+        this.checkout();
+      }
+    },
     // fungsi mengirim data ke API
     checkout() {
-      let productIds = this.cartUser.map(function(product) {
+      let productIds = this.cartUser.map(function (product) {
         return product.id;
       });
 
@@ -192,19 +214,16 @@ export default {
         address: this.customerInfo.address,
         transaction_total: this.totalAll,
         transaction_status: "PENDING",
-        transaction_details: productIds
+        transaction_details: productIds,
       };
 
       axios
-        .post(
-          "http://127.0.0.1:8000/api/checkout",
-          checkoutData
-        )
+        .post("http://127.0.0.1:8000/api/checkout", checkoutData)
         .then(() => this.$router.push("success"))
         .then(() => localStorage.removeItem("cartUser"))
         // eslint-disable-next-line no-console
-        .catch(err => console.log(err));
-    }
+        .catch((err) => console.log(err));
+    },
   },
   mounted() {
     if (localStorage.getItem("cartUser")) {
@@ -217,7 +236,7 @@ export default {
   },
   computed: {
     totalPrice() {
-      return this.cartUser.reduce(function(items, data) {
+      return this.cartUser.reduce(function (items, data) {
         return items + data.price;
       }, 0);
     },
@@ -226,8 +245,8 @@ export default {
     },
     totalAll() {
       return this.totalPrice + this.addTax;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -235,5 +254,14 @@ export default {
 .img-cart {
   width: 100px;
   height: 100px;
+}
+
+.proceed-btn {
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.proceed-btn:hover {
+  color: #ffffff;
+  background: #e7ab3c;
 }
 </style>

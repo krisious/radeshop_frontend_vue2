@@ -161,7 +161,7 @@ export default {
 }
 
 .footer-social a:hover:before {
-    opacity: 1;
+  opacity: 1;
 }
 
 .footer-social a:before {

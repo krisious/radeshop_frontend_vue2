@@ -5,25 +5,25 @@
         <div class="insta-item set-bg" style="background-image: url('img/contributor/rakha.png')">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
-                <h5><a href="https://www.instagram.com/rakhadimas_/">rakhadimas_</a></h5>
+                <h5><a href="https://www.instagram.com/rakhadimas_/" target="_blank">rakhadimas_</a></h5>
             </div>
         </div>
         <div class="insta-item set-bg" style="background-image: url('img/contributor/agung.png')">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
-                <h5><a href="https://www.instagram.com/krynero/">krynero</a></h5>
+                <h5><a href="https://www.instagram.com/krynero/" target="_blank">krynero</a></h5>
             </div>
         </div>
         <div class="insta-item set-bg" style="background-image: url('img/contributor/dwi.png')">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
-                <h5><a href="https://www.instagram.com/dwi_krisdito/">dwi_krisdito</a></h5>
+                <h5><a href="https://www.instagram.com/dwi_krisdito/" target="_blank">dwi_krisdito</a></h5>
             </div>
         </div>
         <div class="insta-item set-bg" style="background-image: url('img/contributor/estu.png')">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
-                <h5><a href="https://www.instagram.com/pangstuu_/">pangstuu_</a></h5>
+                <h5><a href="https://www.instagram.com/pangstuu_/" target="_blank">pangstuu_</a></h5>
             </div>
         </div>
     </div>

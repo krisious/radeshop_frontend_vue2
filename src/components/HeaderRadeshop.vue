@@ -14,7 +14,12 @@
           </div>
           <div class="ht-right">
             <div class="login-panel">
-              <a href="http://127.0.0.1:8000/" target="_blank" class="primary-btn">Admin</a>
+              <a
+                href="http://127.0.0.1:8000/"
+                target="_blank"
+                class="primary-btn"
+                >Admin</a
+              >
             </div>
           </div>
         </div>
@@ -80,10 +85,9 @@
                   <div class="select-button">
                     <a href="#" class="primary-btn view-card"
                       ><router-link to="/cart" style="color: #fff"
-                        >VIEW CARD</router-link
+                        >VIEW CART</router-link
                       ></a
                     >
-                    <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                   </div>
                 </div>
               </li>
@@ -139,11 +143,11 @@ export default {
   height: 80px;
 }
 
-.header-top .ht-right .login-panel{
+.header-top .ht-right .login-panel {
   padding: 15px;
 }
 
-.login-panel .primary-btn{
+.login-panel .primary-btn {
   width: 100px;
   padding: 5px;
 }
