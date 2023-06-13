@@ -126,7 +126,7 @@
                       Total Biaya
                       <span>Rp{{ totalAll }}</span>
                     </li>
-                    <li class="subtotal mt-3">
+                    <li class="subtotal mt-3">  
                       Bank Transfer
                       <span>Mandiri</span>
                     </li>
@@ -254,5 +254,14 @@ export default {
 .img-cart {
   width: 100px;
   height: 100px;
+}
+
+.proceed-btn {
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.proceed-btn:hover {
+  color: #ffffff;
+  background: #e7ab3c;
 }
 </style>
