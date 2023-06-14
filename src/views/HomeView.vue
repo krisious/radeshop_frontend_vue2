@@ -4,7 +4,6 @@
     <HeroRadeshop />
     <PopularRadeshop />
     <InstagramRadeshop />
-    <PartnerRadeshop />
     <FooterRadeshop />
   </div>
 </template>
@@ -16,7 +15,6 @@ import HeaderRadeshop from "@/components/HeaderRadeshop.vue";
 import HeroRadeshop from "@/components/HeroRadeshop.vue";
 import PopularRadeshop from "@/components/PopularRadeshop.vue";
 import InstagramRadeshop from "@/components/InstagramRadeshop.vue";
-import PartnerRadeshop from "@/components/PartnerRadeshop.vue";
 import FooterRadeshop from "@/components/FooterRadeshop.vue";
 
 export default {
@@ -26,7 +24,6 @@ export default {
     HeroRadeshop,
     PopularRadeshop,
     InstagramRadeshop,
-    PartnerRadeshop,
     FooterRadeshop,
   },
 };

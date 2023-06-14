@@ -33,14 +33,14 @@
                       ></router-link>
                     </li>
                     <li class="quick-view">
-                      <router-link v-bind:to="'/product/' + itemProduct.id">
+                      <router-link v-bind:to="'/product/' + itemProduct.id" >
                         + Quick View
                       </router-link>
                     </li>
                     <li class="w-icon">
                       <router-link
                         v-bind:to="'/product/' + itemProduct.id"
-                        class="fa fa-random"
+                        class="fa fa-random" @click="refreshPage()"
                       ></router-link>
                     </li>
                   </ul>
@@ -57,7 +57,7 @@
           </div>
 
           <div class="col-lg-12" v-else>
-            <p>Produk terbaru belum tersedia untuk saat ini.</p>
+            <p>Belum ada produk</p>
           </div>
         </div>
       </div>

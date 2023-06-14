@@ -36,6 +36,16 @@
               </router-link>
             </div>
           </div>
+          <div>
+            <router-link to="/market" class="route-item">
+              Products
+            </router-link>
+          </div>  
+          <div>
+            <router-link to="/about-us" class="route-item">
+              About Us
+            </router-link>
+          </div>
           <div class="text-right">
             <ul class="nav-right">
               <li class="cart-icon">
@@ -150,5 +160,16 @@ export default {
 .login-panel .primary-btn {
   width: 100px;
   padding: 5px;
+}
+
+.route-item {
+  font-size: 20px;
+  color: #2c3e50;
+  transition: all 0.1s ease 0.1s;
+}
+
+.route-item:hover {
+  font-weight: bolder;
+  color: #e7ab3c;
 }
 </style>
